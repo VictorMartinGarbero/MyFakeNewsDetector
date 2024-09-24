@@ -15,6 +15,7 @@ numpy = "~1.25"
 nltk = "^3.9.1"
 gensim = "^4.3.3"
 mlflow = "^2.16.2"
+streamlit = "^1.38.0"
 
 
 [build-system]
