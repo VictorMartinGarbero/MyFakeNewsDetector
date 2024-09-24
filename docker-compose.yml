@@ -4,7 +4,17 @@ services:
     image: ghcr.io/mlflow/mlflow
     ports: 
       - 5000:5000
-    command: mlflow server
+    volumes :
+      - ./mlruns:/mlruns
+      - ./mlartifacts:/mlartifacts
+    command: mlflow server --host 0.0.0.0 --backend-store-uri ./mbruns --artifacts-destination ./mlartifacts --dev
+    #command: mlflow server
+    model:
+      image: ghcr.io/mlflow/mlflow
+      depends_on:
+        - mlflow
+      environment:
+          MLFLOW TRACKING URI=http://mlflow:5000
 
 
   #Para lanzarlo docker-compose up
